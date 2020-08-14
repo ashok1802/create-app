@@ -23,8 +23,8 @@ const LoginContainer = () => {
     .catch((err) => {
       err.inner.forEach((ele) => {
         // dispatch({ type: `${ele.path}Error`, value: ele.message });
-        if(ele.path === 'username') setUsernameErr(setUsernameErr)
-        if(ele.path === 'password') setUsernameErr(setPasswordErr)
+        if(ele.path === 'username') setUsernameErr(ele.message)
+        if(ele.path === 'password') setPasswordErr(ele.message)
         console.log(ele.path, ele.message)
       });
     });
@@ -33,7 +33,8 @@ const LoginContainer = () => {
   return (
     <LoginComponent username={username}
       password={password} setUsername={setUsername} setPassword={setPassword}
-      validateData={validateData} usernameErr={usernameErr} passwordErr={passwordErr}/>
+      validateData={validateData} usernameErr={usernameErr} passwordErr={passwordErr}
+      setUsernameErr={setUsernameErr} setPasswordErr={setPasswordErr} />
   )
 
 }
